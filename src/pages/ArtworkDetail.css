@@ -1,0 +1,92 @@
+.artwork-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .artwork-image {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .artwork-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .artwork-info {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .artwork-info h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .artwork-price {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .artwork-metadata {
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .artwork-metadata p {
+    margin-bottom: 5px;
+  }
+  
+  .artwork-description {
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  .artwork-actions {
+    margin-top: 20px;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #333;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #555;
+  }
+  
+  .in-cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .in-cart-message {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .view-cart-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .view-cart-btn:hover {
+    background-color: #e0e0e0;
+  }

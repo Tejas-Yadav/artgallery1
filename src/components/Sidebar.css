@@ -1,0 +1,78 @@
+.sidebar {
+    width: 250px;
+    background-color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+  
+  .logo {
+    margin-bottom: 30px;
+  }
+  
+  .logo a {
+    font-size: 22px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .tagline {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+  }
+  
+  .links {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-links, .social-links {
+    margin-bottom: 30px;
+  }
+  
+  .nav-links a, .social-links a {
+    display: block;
+    padding: 8px 0;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover, .social-links a:hover {
+    color: #000;
+  }
+  
+  .cart-icon {
+    position: relative;
+  }
+  
+  .cart-icon a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #333;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+  
