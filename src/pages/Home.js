@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import artData from '../data/artworks';
 import './Home.css';
 
 const Home = () => {
-  // Display a few featured artworks
-  const featuredArt = artData.slice(0, 4);
+  const [homeArtworks, setHomeArtworks] = useState([]);
+
+  useEffect(() => {
+    const fetchHomeArtworks = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/art/homeArtworks');
+        const data = await response.json();
+        console.log('Image response:', data);
+        setHomeArtworks(data.images); // Assuming your backend sends { images: [...] }
+      } catch (error) {
+        console.error('Error fetching home artworks:', error);
+      }
+    };
+
+    fetchHomeArtworks();
+  }, []);
+
+
 
   return (
     <div className="home-page">
@@ -14,15 +29,15 @@ const Home = () => {
         <p>Explore a world where classical art meets modern expression</p>
         <Link to="/artworks" className="cta-button">View Gallery</Link>
       </div>
-      
+
       <div className="featured-works">
         <h2>Featured Works</h2>
         <div className="artwork-grid">
-          {featuredArt.map(artwork => (
-            <div className="artwork-card" key={artwork.id}>
-              <Link to={`/artwork/${artwork.id}`}>
-                <img src={`/api/placeholder/${artwork.dimensions.width}/${artwork.dimensions.height}`} alt={artwork.title} />
-                <h3>{artwork.title}</h3>
+          {homeArtworks.map(artwork => (
+            <div className="artwork-card">
+              <Link>
+                <img src={`${artwork.url}`} />
+                {/* <h3>{artwork.title}</h3> */}
               </Link>
             </div>
           ))}
