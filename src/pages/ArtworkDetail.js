@@ -1,42 +1,82 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import artData from '../data/artworks';
 import './ArtworkDetail.css';
 
 const ArtworkDetail = ({ addToCart, cart }) => {
+  const [art, setArt] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
-  const artwork = artData.find(art => art.id === parseInt(id, 10));
-  
-  if (!artwork) {
-    return <div className="artwork-not-found">Artwork not found</div>;
-  }
-  
+
+
+  useEffect(() => {
+    const fetchArtwork = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/art/artwork/' + id);
+        const data = await response.json();
+        console.log('Image response:', data);
+        setArt(data.image); // Assuming your backend sends { images: [...] }
+      } catch (error) {
+        console.error('Error fetching home artworks:', error);
+      }
+    };
+
+    fetchArtwork();
+  }, []);
+
   // Check if the artwork is already in the cart
-  const isInCart = cart.some(item => item.id === artwork.id);
-  
+  const isInCart = cart.some(item => item === art);
+
   const handleAddToCart = () => {
-    addToCart(artwork);
+    addToCart(art);
   };
-  
+
   const goToCart = () => {
     navigate('/cart');
+  };
+
+  const openPreview = (url) => {
+    const win = window.open();
+    win.document.write(`
+      <html>
+        <head>
+          <title>Artwork Preview</title>
+          <style>
+            body {
+              margin: 0;
+              background: #000;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+            }
+            img {
+              max-width: 100%;
+              max-height: 100%;
+            }
+          </style>
+        </head>
+        <body>
+          <img src="${url}" alt="Preview"/>
+        </body>
+      </html>
+    `);
+    win.document.close();
   };
 
   return (
     <div className="artwork-detail">
       <div className="artwork-image">
-        <img src={`/api/placeholder/${artwork.dimensions.width}/${artwork.dimensions.height}`} alt={artwork.title} />
+        <img src={art} onClick={() => openPreview(art)} />
       </div>
       <div className="artwork-info">
-        <h1>{artwork.title}</h1>
-        <div className="artwork-price">${artwork.price.toLocaleString()}</div>
+        <h1>Artwork title</h1>
+        <div className="artwork-price">Price</div>
         <div className="artwork-metadata">
-          <p>{artwork.dimensions.width} x {artwork.dimensions.height} inches</p>
-          <p>{artwork.medium}</p>
+          <p>Width x Height inches</p>
+          <p>Medium</p>
         </div>
         <div className="artwork-description">
-          <p>{artwork.description}</p>
+          <p>Description</p>
         </div>
         <div className="artwork-actions">
           {!isInCart ? (

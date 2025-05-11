@@ -15,6 +15,7 @@ const Sidebar = ({ cartItemCount }) => {
         <div className="nav-links">
           <Link to="/artworks">Artworks</Link>
           <Link to="/about">About</Link>
+          <Link to="/admin">Admin</Link>
         </div>
         
         <div className="social-links">

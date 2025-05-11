@@ -1,23 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import artData from '../data/artworks';
 import './Artworks.css';
 
 const Artworks = () => {
+
+  const [artworks, setArtworks] = useState([]);
+
+  useEffect(() => {
+    const fetchArtworks = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/art/artworks');
+        const data = await response.json();
+        console.log('Image response:', data);
+        setArtworks(data.images); // Assuming your backend sends { images: [...] }
+      } catch (error) {
+        console.error('Error fetching home artworks:', error);
+      }
+    };
+
+    fetchArtworks();
+  }, []);
+
   return (
     <div className="artworks-page">
-      <h1>Paintings</h1>
+      <h1 className='title'>Paintings</h1>
       <div className="artwork-grid">
-        {artData.map(artwork => (
-          <div className="artwork-card" key={artwork.id}>
-            <Link to={`/artwork/${artwork.id}`}>
-              <img src={`/api/placeholder/${artwork.dimensions.width}/${artwork.dimensions.height}`} alt={artwork.title} />
-              <h3>{artwork.title}</h3>
+        {artworks.map((artwork, index) => (
+          <div className="artwork-card" key={artwork.filename || index}>
+            <Link to={`/artworks/${artwork.filename || index}`}>
+              <img src={artwork.url} alt={artwork.title} />
             </Link>
           </div>
         ))}
       </div>
-    </div>
+    </div >
   );
 };
 

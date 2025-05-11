@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     const fetchHomeArtworks = async () => {
       try {
-        const response = await fetch('http://localhost:3000/art/homeArtworks');
+        const response = await fetch('http://localhost:4000/art/homeArtworks');
         const data = await response.json();
         console.log('Image response:', data);
         setHomeArtworks(data.images); // Assuming your backend sends { images: [...] }
@@ -33,11 +33,10 @@ const Home = () => {
       <div className="featured-works">
         <h2>Featured Works</h2>
         <div className="artwork-grid">
-          {homeArtworks.map(artwork => (
-            <div className="artwork-card">
-              <Link>
-                <img src={`${artwork.url}`} />
-                {/* <h3>{artwork.title}</h3> */}
+          {homeArtworks.map((artwork, index) => (
+            <div className="artwork-card" key={artwork.id || index}>
+              <Link to={`/artworks/${artwork.id || index}`}>
+                <img src={artwork.url} alt={artwork.title} />
               </Link>
             </div>
           ))}

@@ -12,7 +12,7 @@ import Login from './pages/Login';
 
 function App() {
   const [cart, setCart] = useState([]);
-  
+
   const addToCart = (artwork) => {
     // Check if artwork is already in cart
     if (!cart.some(item => item.id === artwork.id)) {
@@ -26,8 +26,8 @@ function App() {
 
   const updateQuantity = (artworkId, newQuantity) => {
     if (newQuantity < 1) return;
-    
-    setCart(cart.map(item => 
+
+    setCart(cart.map(item =>
       item.id === artworkId ? { ...item, quantity: newQuantity } : item
     ));
   };
@@ -56,22 +56,25 @@ function App() {
         <Route path="/" element={renderWithSidebar(<Home />)} />
         <Route path="/about" element={renderWithSidebar(<About />)} />
         <Route path="/artworks" element={renderWithSidebar(<Artworks />)} />
-        <Route path="/artwork/:id" element={
+        <Route path="/artworks/:id" element={
           renderWithSidebar(<ArtworkDetail addToCart={addToCart} cart={cart} />)
+        } />
+        <Route path="/admin" element={
+          renderFullWidth(<Admin />)
         } />
         <Route path="/cart" element={
           renderWithSidebar(
-            <Cart 
-              cart={cart} 
+            <Cart
+              cart={cart}
               removeFromCart={removeFromCart}
               updateQuantity={updateQuantity}
             />
           )
         } />
-        
+
         {/* Admin routes - no sidebar */}
         <Route path="/login" element={renderFullWidth(<Login />)} />
-        <Route path="/admin" element={renderFullWidth(<Admin />)} />
+
       </Routes>
     </Router>
   );
