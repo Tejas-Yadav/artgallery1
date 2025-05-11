@@ -1,4 +1,4 @@
-import { Minus, Plus, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css';
@@ -30,22 +30,7 @@ const Cart = ({ cart, removeFromCart, updateQuantity }) => {
               <h3>{item.title}</h3>
               <p className="item-price">${item.price.toLocaleString()}</p>
             </div>
-            <div className="item-quantity">
-              <button 
-                className="quantity-btn" 
-                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                disabled={item.quantity <= 1}
-              >
-                <Minus size={16} />
-              </button>
-              <span className="quantity">{item.quantity}</span>
-              <button 
-                className="quantity-btn" 
-                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-              >
-                <Plus size={16} />
-              </button>
-            </div>
+           
             <div className="item-total">
               ${(item.price * item.quantity).toLocaleString()}
             </div>
