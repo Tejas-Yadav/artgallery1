@@ -7,12 +7,12 @@ const About = () => {
       <div className="about-content">
         <h1>About</h1>
         <p>
-          Johnathan Gates is an artist with decades of experience in old art techniques. 
-          Through his careful exploration of Renaissance styles and techniques, he has gained 
+          Rucha Paranjape is an artist with decades of experience in old art techniques. 
+          Through her careful exploration of Renaissance styles and techniques, she has gained 
           insight into the aesthetics of classical art as well as the history that lies behind it.
         </p>
         <p>
-          He has successfully created a number of pieces that capture the beauty and grace of old art 
+          She has successfully created a number of pieces that capture the beauty and grace of old art 
           while still incorporating elements of modernity.
         </p>
         
@@ -35,10 +35,10 @@ const About = () => {
         </ul>
         
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:jonathan.gates@email.com">jonathan.gates@email.com</a></p>
+        <p>Email: <a href="mailto:paranjaperucha9@email.com">paranjaperucha9@gmail.com</a></p>
         
         <div className="social-media">
-          <h3>Follow Johnathan</h3>
+          <h3>Follow Rucha</h3>
           <div className="social-links">
             <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
             <a href="https://behance.net" target="_blank" rel="noreferrer">Behance</a>

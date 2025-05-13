@@ -8,7 +8,7 @@ const Sidebar = ({ cartItemCount }) => {
     <div className="sidebar">
       <div className="logo">
         <Link to="/">OnlyOnRucha</Link>
-        <div className="tagline">A simplistic portfolio of a self taught artist Johnathan Gates.</div>
+        <div className="tagline">A simplistic portfolio of a self taught artist Rucha Paranjape.</div>
       </div>
       
       <div className="links">
